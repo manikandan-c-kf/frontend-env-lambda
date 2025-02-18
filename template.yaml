@@ -37,4 +37,4 @@ Resources:
 Outputs:
   LambdaFunctionArn:
     Description: "ARN of the deployed Lambda function"
-    Value: !GetAtt ReadEnvFunction.Arn
+    Value: !GetAtt ReadFrontendEnvFunction.Arn
