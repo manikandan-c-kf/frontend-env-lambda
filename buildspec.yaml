@@ -13,13 +13,13 @@ phases:
       - echo $CODEBUILD_INITIATOR
       - |
         if echo $CODEBUILD_INITIATOR | grep -qe "-dev$"; then
-          sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --capabilities=CAPABILITY_NAMED_IAM --disable-rollback --parameter-overrides ParameterKey="Stage",ParameterValue="dev" ParameterKey="ProjectName",ParameterValue="mebweb" --stack-name sam-deploy-development
+          sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --capabilities=CAPABILITY_NAMED_IAM --disable-rollback --parameter-overrides ParameterKey="Stage",ParameterValue="dev" ParameterKey="ProjectName",ParameterValue="mebweb" --stack-name frontend-sam-deploy-development
         fi;
       - |
         if echo $CODEBUILD_INITIATOR | grep -qe "-stage$"; then
-          sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --capabilities=CAPABILITY_NAMED_IAM --disable-rollback --parameter-overrides ParameterKey=Stage,ParameterValue=stage ParameterKey="ProjectName",ParameterValue="mebweb" --stack-name sam-deploy-staging
+          sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --capabilities=CAPABILITY_NAMED_IAM --disable-rollback --parameter-overrides ParameterKey=Stage,ParameterValue=stage ParameterKey="ProjectName",ParameterValue="mebweb" --stack-name frontend-sam-deploy-staging
         fi;  
       - |
         if echo $CODEBUILD_INITIATOR | grep -qe "-prod$"; then
-          sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --capabilities=CAPABILITY_NAMED_IAM --disable-rollback --parameter-overrides ParameterKey=Stage,ParameterValue=prod --stack-name sam-deploy-production
+          sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --capabilities=CAPABILITY_NAMED_IAM --disable-rollback --parameter-overrides ParameterKey=Stage,ParameterValue=prod --stack-name frontend-sam-deploy-production
         fi;
